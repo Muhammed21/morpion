@@ -9,12 +9,15 @@
   </head>
   <body>
     <audio loop autoplay src="../assets/audio/TerminalLoop.mp3"></audio>
+    <audio src="../assets/audio/joueur1.mp3" id="song1"></audio>
+    <audio autoplay src="../assets/audio/joueur1.mp3"></audio>
+    <audio src="../assets/audio/joueur2.mp3" id="song2"></audio>
     <main class="scanlines">
       <div class="screen">
         <canvas id="canvas" class="picture"></canvas>
         <div class="overlay">
           <div class="text">
-            <span>PLAYER <span id="tours">1</span>'s turn</span>
+            <span>TOUR DU PLAYER/<span id="tours">1</span></span>
           </div>
           <section>
             <!-- <p>Joueur: <span id="tours">1</span> c'est à toi</p> -->

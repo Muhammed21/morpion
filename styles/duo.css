@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 500px;
+  width: 700px;
   gap: 2px;
   aspect-ratio: 1/1;
 }
@@ -24,7 +24,7 @@ section img {
   transform: translate3d(-50%, -50%, 0);
   left: 49.5%;
   top: 50%;
-  width: 500px;
+  width: 700px;
 }
 
 .frame-cooldown,

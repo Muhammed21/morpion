@@ -1,4 +1,4 @@
-let Imgsize = "100px";
+let Imgsize = "150px";
 
 let morpion = [
   [0, 0, 0],
@@ -34,6 +34,16 @@ const name1 = localStorage.getItem("Name1");
 
 const name2 = localStorage.getItem("Name2");
 
+function playSongPlayer1() {
+  let songPlayer1 = document.getElementById("song1");
+  songPlayer1.play();
+}
+
+function playSongPlayer2() {
+  let songPlayer2 = document.getElementById("song2");
+  songPlayer2.play();
+}
+
 function makeMove(row, coll) {
   if (morpion[row][coll] === 0) {
     morpion[row][coll] = currentPlayer;
@@ -48,7 +58,7 @@ function makeMove(row, coll) {
       }, "3000");
       localStorage.setItem("Winner", winPlayerNum);
       localStorage.setItem("WinnerName", winPlayer);
-      score += 200;
+      score = score + 200;
       localStorage.setItem("Score", score);
       console.log(winPlayer, score);
       return;
@@ -59,6 +69,8 @@ function makeMove(row, coll) {
       setTimeout(() => {
         resetGame();
       }, "3000");
+      score = score + 100;
+      console.log(winPlayer, score);
       return;
     }
     currentPlayer = currentPlayer === 1 ? 2 : 1;
@@ -172,11 +184,13 @@ function displayMorpion() {
         if (currentPlayer === 1) {
           tours = 2;
           winPlayer = `${name1}`;
+          cellule.onclick = playSongPlayer1();
           console.log(name1);
           winPlayerNum = 1;
         } else if (currentPlayer === 2) {
           tours = 1;
           winPlayer = `${name2}`;
+          cellule.onclick = playSongPlayer2();
           winPlayerNum = 2;
         }
         if (morpion[row][coll] === 0) {

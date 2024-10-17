@@ -64,7 +64,13 @@ function handleKeypress(e, input, output) {
     return elements.indexOf(document.activeElement.tagName) === -1;
   }
 
+  function enterSong() {
+    const songEnter = document.getElementById("songEnter");
+    songEnter.play();
+  }
+
   if (noInputHasFocus()) {
+    enterSong();
     // Enter traite la commande
     if (e.key === "Enter") {
       const command = input.innerText;
