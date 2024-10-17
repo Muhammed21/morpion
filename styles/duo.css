@@ -1,0 +1,84 @@
+#morpion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 500px;
+  gap: 2px;
+  aspect-ratio: 1/1;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+}
+
+section img {
+  position: absolute;
+  opacity: 0.8;
+  z-index: 1;
+  transform: translate3d(-50%, -50%, 0);
+  left: 49.5%;
+  top: 50%;
+  width: 500px;
+}
+
+.frame-cooldown,
+.frame-null {
+  display: none;
+  z-index: 5;
+  position: absolute;
+  transform: translate3d(-50%, -50%, 0);
+  left: 50%;
+  top: 50%;
+}
+
+.frame-cooldown h1,
+.frame-null h1 {
+  position: absolute;
+  font-size: 15px;
+  font-family: Sys;
+  width: max-content;
+  transform: translate3d(-50%, -50%, 0);
+  left: 50%;
+  top: 40%;
+}
+
+.frame-cooldown span {
+  position: absolute;
+  text-decoration: underline;
+  font-size: 15px;
+  font-family: Terminal;
+  width: max-content;
+  transform: translate3d(-50%, -50%, 0);
+  left: 50%;
+  top: 60%;
+}
+
+.imgRect {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  transform: translate3d(-50%, -50%, 0);
+  left: 49.5%;
+  z-index: 0;
+  top: 53%;
+  background-color: blue;
+}
+
+.cellule {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: blue; */
+  width: 32%;
+  font-size: 30px;
+  aspect-ratio: 1/1;
+  color: black;
+}

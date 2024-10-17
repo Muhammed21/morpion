@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dessiner une grille</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/duo.css" />
+  </head>
+  <body>
+    <audio loop autoplay src="../assets/audio/TerminalLoop.mp3"></audio>
+    <main class="scanlines">
+      <div class="screen">
+        <canvas id="canvas" class="picture"></canvas>
+        <div class="overlay">
+          <div class="text">
+            <span>PLAYER <span id="tours">1</span>'s turn</span>
+          </div>
+          <section>
+            <!-- <p>Joueur: <span id="tours">1</span> c'est à toi</p> -->
+            <img src="../assets/png/grille.png" />
+            <div id="morpion"></div>
+          </section>
+          <div id="frame-cooldown" class="frame-cooldown">
+            <img src="../assets/png/mac-frame.png" />
+            <h1>Le gagnant est..</h1>
+            <span id="players" class="players">dans 3</span>
+          </div>
+          <div id="frame-null" class="frame-null">
+            <img src="../assets/png/mac-frame.png" />
+            <h1>Match null..</h1>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="../javascript/morpion.js"></script>
+  </body>
+</html>

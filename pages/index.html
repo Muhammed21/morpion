@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <style>
+      /* Make the video full screen and responsive */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #video-container {
+        position: fixed;
+        background-color: black;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      video {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      #content {
+        display: none; /* Hide the content initially */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="video-container">
+      <video id="introVideo" autoplay muted>
+        <source
+          src="../assets/video/American Megatrends Bios Motherboard Setup.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="content">
+      <div class="div-musical">
+        <audio autoplay id="bg-musique" preload="auto"></audio>
+      </div>
+      <div id="audio-keyboard"></div>
+      <!-- <audio controls src="../assets/audio/Terminal_intro.mp3"></audio> -->
+      <main class="scanlines">
+        <div class="screen">
+          <canvas id="canvas" class="picture"></canvas>
+          <div class="overlay">
+            <div class="text">
+              <span>MORPION-1</span>
+            </div>
+            <div class="menu" id="menu">
+              <header>menu principale</header>
+              <ul>
+                <li><a href="../pages/screen.html" title="">jeux duo</a></li>
+                <li><a href="#" title="">parametre</a></li>
+              </ul>
+              <footer>
+                <div class="key">Select: <span>→</span></div>
+              </footer>
+            </div>
+            <section class="terminale" id="terminale">
+              <div class="top-terminal">
+                <div class="btn-window">
+                  <div class="close"></div>
+                  <div class="minimise"></div>
+                  <div class="agrendir"></div>
+                </div>
+              </div>
+              <div class="bottom-terminal">
+                <pre id="asciiText">
+ __    __     ______     ______     ______   __     ______     __   __ 
+/\ "-./  \   /\  __ \   /\  == \   /\  == \ /\ \   /\  __ \   /\ "-.\ \  
+\ \ \-./\ \  \ \ \/\ \  \ \  __<   \ \  _-/ \ \ \  \ \ \/\ \  \ \ \-.  \ 
+ \ \_\ \ \_\  \ \_____\  \ \_\ \_\  \ \_\    \ \_\  \ \_____\  \ \_\\"\_\ 
+  \/_/  \/_/   \/_____/   \/_/ /_/   \/_/     \/_/   \/_____/   \/_/ \/_/                                                                                                                                                                                  
+              </pre
+                >
+                <pre id="instructions"></pre>
+                <pre id="output"></pre>
+                <div id="prompt">
+                  <span id="command-input"></span
+                  ><span id="cursor" class="blink"></span>
+                </div>
+
+                <div id="interlaced"></div>
+                <div id="glare"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+      <script src="../javascript/mainMenu.js"></script>
+      <script src="../javascript/script.js"></script>
+    </div>
+    <script src="../javascript/audioCRT.js"></script>
+    <script>
+      // When the video ends, show the content
+      const video = document.getElementById("introVideo");
+      const content = document.getElementById("content");
+      const videoContainer = document.getElementById("video-container");
+
+      video.addEventListener("ended", () => {
+        // Hide the video container
+        videoContainer.style.display = "none";
+
+        // Display the main content
+        content.style.display = "block";
+
+        // Alternatively, you can load an external page dynamically:
+        // loadIndexContent();
+      });
+
+      // Function to load index.html content dynamically (optional)
+      function loadIndexContent() {
+        fetch("index.html")
+          .then((response) => response.text())
+          .then((html) => {
+            document.body.innerHTML = html;
+          })
+          .catch((error) => console.error("Error loading index.html:", error));
+      }
+    </script>
+  </body>
+</html>

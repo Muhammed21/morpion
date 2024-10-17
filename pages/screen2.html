@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/screen.css" />
+  </head>
+  <body>
+    <audio loop autoplay src="../assets/audio/TerminalLoop.mp3"></audio>
+    <main class="scanlines">
+      <div class="screen">
+        <canvas id="canvas" class="picture"></canvas>
+        <div class="overlay">
+          <div class="text">
+            <span>SELFIE-PLAYR/2</span>
+          </div>
+
+          <div class="contentarea">
+            <div class="camera">
+              <div class="output" id="output">
+                <img
+                  id="photo"
+                  alt="The image captured will appear in this box."
+                />
+              </div>
+              <video id="video" class="video">
+                Video stream not available.
+              </video>
+            </div>
+            <div style="display: none">
+              <button id="startbutton">Capture Image</button>
+            </div>
+            <footer>
+              <div class="key">Capturer: <span>→</span></div>
+            </footer>
+            <!-- <canvas id="canvas"></canvas> -->
+          </div>
+          <div id="frame-cooldown" class="frame-cooldown">
+            <img src="../assets/png/mac-frame.png" />
+            <h1>Debut du jeux</h1>
+            <span id="cooldown" class="cooldown">dans 3</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      let imgCapture = document.querySelector(".output");
+      let video = document.querySelector(".video");
+      let popup = document.querySelector(".frame-cooldown");
+      let cooldown = document.querySelector(".cooldown");
+      let countRed;
+
+      function countDown() {
+        if (countRed > 0) {
+          cooldown.innerHTML = `dans ${countRed}`;
+          countRed--;
+          setTimeout(countDown, "1000");
+        } else if (countRed === 0) {
+          document.location.href = "../pages/duo.html";
+        }
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (event.keyCode === 39) {
+          video.style.display = "none";
+          imgCapture.style.display = "block";
+          countRed = 3;
+          popup.style.display = "block";
+          countDown();
+          document.getElementById("startbutton").click();
+        }
+      });
+    </script>
+    <script src="../javascript/screen2.js"></script>
+    <script src="../javascript/mainMenu.js"></script>
+    <script src="../javascript/script.js"></script>
+    <script src="../javascript/audioCRTAmbiant.js"></script>
+  </body>
+</html>

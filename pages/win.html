@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Winn</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/screen.css" />
+  </head>
+  <body>
+    <audio loop autoplay src="../assets/audio/TerminalLoop.mp3"></audio>
+    <main class="scanlines">
+      <div class="screen">
+        <canvas id="canvas" class="picture"></canvas>
+        <div class="overlay">
+          <div class="text">
+            <span id="winner" style="width: 1300px"></span>
+          </div>
+
+          <div class="contentarea">
+            <img src="" alt="" id="imgPlayer" />
+            <footer>
+              <div class="key">Tu as gagne: <span id="pts"></span></div>
+            </footer>
+            <!-- <canvas id="canvas"></canvas> -->
+          </div>
+          <div id="frame-cooldown" class="frame-cooldown">
+            <img src="../assets/png/mac-frame.png" />
+            <h1>Le gagnant est</h1>
+            <script></script>
+            <span id="cooldown" class="cooldown">dans 3</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const ImgPlayer1 = localStorage.getItem("capturedImage");
+      const ImgPlayer2 = localStorage.getItem("capturedImage2");
+      const points = document.getElementById("pts");
+      const winnerName = localStorage.getItem("WinnerName");
+      const winnerPlayer = document.getElementById("winner");
+      const score = localStorage.getItem("Score");
+      const winner = localStorage.getItem("Winner");
+      const name1 = localStorage.getItem("Name1");
+      const content = document.getElementById("imgPlayer");
+
+      if (winner === "1") {
+        content.setAttribute("src", ImgPlayer1);
+      } else if (winner === "2") {
+        content.setAttribute("src", ImgPlayer2);
+      } else {
+        console.error("Aucun gagnant valide trouvé.");
+      }
+
+      points.innerHTML = `${score} points`;
+      winnerPlayer.innerHTML = `Le gagnant est ${winnerName}`;
+    </script>
+    <script src="../javascript/morpion.js"></script>
+    <script src="../javascript/audioCRTAmbiant.js"></script>
+  </body>
+</html>
