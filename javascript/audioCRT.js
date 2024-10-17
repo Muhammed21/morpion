@@ -1,8 +1,8 @@
 setTimeout(function () {}, 0);
 
 const musicTracks = [
-  "../assets/audio/Terminal_intro.mp3",
-  "../assets/audio/TerminalLoop.mp3",
+  "/assets/audio/Terminal_intro.mp3",
+  "/assets/audio/TerminalLoop.mp3",
 ];
 
 let currentTrackIndex = 0;
