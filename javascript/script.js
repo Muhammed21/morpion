@@ -57,20 +57,30 @@ function handleKeypress(e, input, output) {
       /^[a-zA-Z0-9]$/.test(key) || key === "40" || key === "-" || key === "_"
     ); // Ajoutez d'autres caractères valides si nécessaire
   };
-
+  const arrowKeyCodes = [37, 38, 39, 40];
   // Ne pas gérer si un élément de saisie est actif
   function noInputHasFocus() {
     const elements = ["INPUT", "TEXTAREA", "BUTTON"];
     return elements.indexOf(document.activeElement.tagName) === -1;
   }
 
-  function enterSong() {
+  function enterSound() {
     const songEnter = document.getElementById("songEnter");
+    songEnter.currentTime = 0;
     songEnter.play();
   }
 
-  if (noInputHasFocus()) {
-    enterSong();
+  function arrowSound() {
+    const songArrow = document.getElementById("songArrow");
+    songArrow.play();
+  }
+
+  if (arrowKeyCodes.includes(e.keyCode)) {
+    enterSound();
+  }
+
+  if (noInputHasFocus() && !arrowKeyCodes.includes(e.keyCode)) {
+    arrowSound();
     // Enter traite la commande
     if (e.key === "Enter") {
       const command = input.innerText;
@@ -80,7 +90,7 @@ function handleKeypress(e, input, output) {
         terminale.style.display = "none";
         menu.style.display = "block";
       }
-      input.innerHTML = ""; // Réinitialise l'entrée après avoir exécuté la commande
+      input.innerHTML = ""; // Réinitialise l'entrée après avoir exécuté la commandeefew
     }
 
     // if (e.keyCode === 40 && Playername1 != "" && Playername2 != "") {
@@ -146,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await wait(400);
   await writeText(
     instructions,
-    `Pour pouvoir jouer, veuillez inscrire votre nom et prénom ci-dessus.
+    `Pour pouvoir jouer, veuillez inscrire vos nom et prénom ci-dessus.
 
 $.KEY INDEX
   ↵  (Enter) - Valider`

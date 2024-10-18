@@ -9,7 +9,7 @@
   </head>
   <body>
     <audio loop autoplay src="../assets/audio/TerminalLoop.mp3"></audio>
-    <audio autoplay src="../assets/audio/joueur1.mp3"></audio>
+    <audio src="../assets/audio/joueur1.mp3"></audio>
     <main class="scanlines">
       <div class="screen">
         <canvas id="canvas" class="picture"></canvas>
@@ -47,6 +47,8 @@
       </div>
     </main>
     <script>
+
+
       let imgCapture = document.querySelector(".output");
       let video = document.querySelector(".video");
       let popup = document.querySelector(".frame-cooldown");
@@ -62,6 +64,7 @@
           document.location.href = "../pages/screen2.html";
         }
       }
+
 
       document.addEventListener("keydown", function (event) {
         if (event.keyCode === 39) {

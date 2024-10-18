@@ -32,7 +32,14 @@
   </style>
   <body>
     <audio loop autoplay src="../assets/audio/TerminalLoop.mp3"></audio>
-    <audio autoplay src="../assets/audio/joueur1.mp3"></audio>
+    <audio src="../assets/audio/joueur1.mp3"></audio>
+    <audio id="music" autoplay src="../assets/audio/win.mp3"></audio>
+
+    <script>
+      var audio = document.getElementById("music");
+      audio.volume = 0.6;
+    </script>
+    <main class="
     <main class="scanlines">
       <div class="screen">
         <canvas id="canvas" class="picture"></canvas>

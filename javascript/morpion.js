@@ -20,9 +20,13 @@ let playerTurn;
 
 let tours = 1;
 
+let gameEnded = false; // Variable pour vérifier si le jeu est terminé
+
 const playerCount = document.querySelector("#tours");
 
 const frameCooldown = document.querySelector(".frame-cooldown");
+
+const ptsMatchNull = document.getElementById("pts");
 
 const frameNull = document.querySelector(".frame-null");
 
@@ -51,29 +55,29 @@ function makeMove(row, coll) {
     displayMorpion();
 
     if (checkWin(currentPlayer)) {
-      // alert("Tu as gagné!");
+      gameEnded = true; // Marque le jeu comme terminé
       setTimeout(() => {
         resetGame();
         document.location.href = "../pages/win.html";
-      }, "3000");
+      }, 3000);
       localStorage.setItem("Winner", winPlayerNum);
       localStorage.setItem("WinnerName", winPlayer);
-      score = score + 200;
+      score += 200;
       localStorage.setItem("Score", score);
       console.log(winPlayer, score);
       return;
     }
 
     if (checkMatchNull()) {
-      // alert("Matche Null");
       setTimeout(() => {
-        resetGame();
-      }, "3000");
-      score = score + 100;
+        resetGame(); // Réinitialise le jeu après un match nul
+      }, 3000);
+      score += 100;
       console.log(winPlayer, score);
       return;
     }
-    currentPlayer = currentPlayer === 1 ? 2 : 1;
+
+    currentPlayer = currentPlayer === 1 ? 2 : 1; // Change le joueur
   }
 }
 
@@ -85,6 +89,7 @@ function checkWin(player) {
       morpion[row][2] === player
     ) {
       // alert("horizontale");
+      gameEnded = true;
       setTimeout(() => {
         frameCooldown.style.display = "block";
       }, "500");
@@ -98,6 +103,7 @@ function checkWin(player) {
       morpion[2][coll] === player
     ) {
       // alert("verticale");
+      gameEnded = true;
       setTimeout(() => {
         frameCooldown.style.display = "block";
       }, "500");
@@ -110,6 +116,7 @@ function checkWin(player) {
     morpion[2][2] == player
   ) {
     // alert("diagonale gauche");
+    gameEnded = true;
     setTimeout(() => {
       frameCooldown.style.display = "block";
     }, "500");
@@ -121,6 +128,7 @@ function checkWin(player) {
     morpion[2][0] === player
   ) {
     // alert("diagonale droite");
+    gameEnded = true;
     setTimeout(() => {
       frameCooldown.style.display = "block";
     }, "500");
@@ -138,7 +146,9 @@ function checkMatchNull() {
       }
     }
   }
+  gameEnded = false;
   frameNull.style.display = "block";
+  ptsMatchNull.innerHTML = score + 100;
   return true;
 }
 
@@ -174,6 +184,7 @@ function displayMorpion() {
       }
 
       cellule.addEventListener("click", function () {
+        if (gameEnded) return;
         myBool = !myBool;
 
         if (myBool) {

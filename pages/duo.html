@@ -10,8 +10,13 @@
   <body>
     <audio loop autoplay src="../assets/audio/TerminalLoop.mp3"></audio>
     <audio src="../assets/audio/joueur1.mp3" id="song1"></audio>
-    <audio autoplay src="../assets/audio/joueur1.mp3"></audio>
+    <audio src="../assets/audio/joueur1.mp3"></audio>
     <audio src="../assets/audio/joueur2.mp3" id="song2"></audio>
+    <audio id="music" autoplay src="../assets/audio/duo.mp3"></audio>
+    <script>
+      var audio = document.getElementById("music");
+      audio.volume = 0.6;
+    </script>
     <main class="scanlines">
       <div class="screen">
         <canvas id="canvas" class="picture"></canvas>
@@ -32,6 +37,7 @@
           <div id="frame-null" class="frame-null">
             <img src="../assets/png/mac-frame.png" />
             <h1>Match null..</h1>
+            <span id="pts" class="pts">+ 100 pts</span>
           </div>
         </div>
       </div>
