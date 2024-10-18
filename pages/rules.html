@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <style>
+    .btn-reload {
+      position: absolute;
+      z-index: 5;
+      display: flex;
+      background-color: #0069ff;
+      border: 4px solid #e7e05c;
+      border-radius: 5px;
+      animation: jerkup 100ms infinite;
+      opacity: 0.8;
+      top: 80%;
+      width: max-content;
+      cursor: pointer;
+      height: max-content;
+      padding: 10px 25px;
+    }
+    a {
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      font-family: Terminal;
+      text-transform: uppercase;
+    }
+  </style>
+  <body>
+    <main class="scanlines">
+      <div class="screen">
+        <canvas id="canvas" class="picture"></canvas>
+        <div
+          class="overlay"
+          style="display: flex; flex-direction: column; gap: 30px"
+        >
+          <div class="text">
+            <span>RULES-1</span>
+          </div>
+          <img class="rules" src="../assets/png/regle_du_jeu.jpg" />
+          <div class="btn-reload" id="btn-reload">
+            <a href="../index.html">Recommencer</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

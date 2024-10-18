@@ -18,6 +18,14 @@ body {
   font-family: "Sys";
 }
 
+.rules {
+  position: absolute;
+  transform: translate3d(-50%, -50%, 0);
+  top: 50%;
+  left: 50%;
+  width: 700px;
+}
+
 .screen::before {
   background: transparent linear-gradient(to bottom, #c0458e 0%, #16073e 100%)
     repeat scroll 0 0;

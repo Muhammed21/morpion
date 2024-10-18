@@ -148,7 +148,7 @@ function checkMatchNull() {
   }
   gameEnded = false;
   frameNull.style.display = "block";
-  ptsMatchNull.innerHTML = score + 100;
+  ptsMatchNull.innerHTML = `${score + 100} points`;
   return true;
 }
 
